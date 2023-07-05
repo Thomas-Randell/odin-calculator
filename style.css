@@ -1,0 +1,36 @@
+body {
+    box-sizing: border-box;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+.display {
+    font-size: 30px;
+    display: flex;
+    border-style: solid;
+    border-width: 2px;
+    height: 32px;
+    justify-content: right;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+}
+
+.digits {
+    display: flex;
+    flex-direction: column;
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+}
