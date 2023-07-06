@@ -15,17 +15,36 @@ function divide(num1, num2) {
 }
 
 let firstNumber
-, secondNumber
-, operator;
+    , secondNumber
+    , operator;
 
 function operate(operator, num1, num2) {
     if (operator == "+") {
-        add(num1, num2);
+        return add(num1, num2);
     } else if (operator == "-") {
-        subtract(num1, num2);
+        return subtract(num1, num2);
     } else if (operator == "*") {
-        multiply(num1, num2);
+        return multiply(num1, num2);
     } else if (operator == "/") {
-        divide(num1, num2);
+        return divide(num1, num2);
     }
 }
+let display = document.querySelector(".display");
+
+let numberButtons = document.querySelectorAll(".numberbtn");
+let operatorButtons = document.querySelectorAll(".operatorbtn")
+let equalsButton = document.querySelector(".equalsbtn")
+
+numberButtons.forEach(button => button.addEventListener('click', function () {
+    let storedNumber = button.innerText;
+    display.innerText += storedNumber;
+}))
+
+operatorButtons.forEach(button => button.addEventListener('click', function () {
+    operator = button.innerText;
+}))
+
+equalsButton.addEventListener("click", function() {
+    let result = operate(operator, firstNumber, secondNumber)
+    display.innerText = result;
+})
