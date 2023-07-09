@@ -42,9 +42,13 @@ numberButtons.forEach(button => button.addEventListener('click', function () {
 
 operatorButtons.forEach(button => button.addEventListener('click', function () {
     operator = button.innerText;
+    firstNumber = Number(display.innerText);
+    display.innerText = "";
 }))
 
 equalsButton.addEventListener("click", function() {
+    secondNumber = Number(display.innerText);
     let result = operate(operator, firstNumber, secondNumber)
     display.innerText = result;
 })
+
