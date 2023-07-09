@@ -7,11 +7,15 @@ function subtract(num1, num2) {
 }
 
 function multiply(num1, num2) {
-    return num1 * num2;
+    return (num1 * num2).toFixed(6);
 }
 
 function divide(num1, num2) {
-    return num1 / num2;
+    if (num1 == 0 || num2 == 0) {
+        return "Nice Try"
+    } else {
+        return (num1 / num2).toFixed(6);
+    }
 }
 
 function clear() {
@@ -44,7 +48,7 @@ let numberButtons = document.querySelectorAll(".numberbtn")
     , clearButton = document.querySelector(".clear");
 
 numberButtons.forEach(button => button.addEventListener('click', function () {
-    if (operator && Number(display.innerText) == firstNumber){
+    if (operator && Number(display.innerText) == firstNumber) {
         display.innerText = "";
     }
     let storedNumber = button.innerText;
@@ -64,11 +68,14 @@ operatorButtons.forEach(button => button.addEventListener('click', function () {
 
 equalsButton.addEventListener("click", function () {
     secondNumber = Number(display.innerText);
-    let result = operate(operator, firstNumber, secondNumber)
-    display.innerText = result;
-    operator = null;
-    firstNumber = null;
-    secondNumber = null;
+    if (operator == null || firstNumber == null || secondNumber == null) {
+    } else {
+        let result = operate(operator, firstNumber, secondNumber)
+        display.innerText = result;
+        operator = null;
+        firstNumber = null;
+        secondNumber = null;
+    }
 })
 
 clearButton.addEventListener("click", clear)
