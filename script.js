@@ -53,6 +53,11 @@ numberButtons.forEach(button => button.addEventListener('click', function () {
 
 
 operatorButtons.forEach(button => button.addEventListener('click', function () {
+    if (operator) {
+        secondNumber = Number(display.innerText);
+        let result = operate(operator, firstNumber, secondNumber)
+        display.innerText = result;
+    }
     operator = button.innerText;
     firstNumber = Number(display.innerText);
 }))
