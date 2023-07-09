@@ -45,7 +45,8 @@ let display = document.querySelector(".display");
 let numberButtons = document.querySelectorAll(".numberbtn")
     , operatorButtons = document.querySelectorAll(".operatorbtn")
     , equalsButton = document.querySelector(".equalsbtn")
-    , clearButton = document.querySelector(".clear");
+    , clearButton = document.querySelector(".clear")
+    , decimalButton = document.querySelector(".decimal");
 
 numberButtons.forEach(button => button.addEventListener('click', function () {
     if (operator && Number(display.innerText) == firstNumber) {
@@ -54,6 +55,15 @@ numberButtons.forEach(button => button.addEventListener('click', function () {
     let storedNumber = button.innerText;
     display.innerText += storedNumber;
 }))
+
+decimalButton.addEventListener("click", function () {
+    let currentDisplay = display.innerText;
+    if (currentDisplay.includes(".")) {
+        
+    } else {
+        display.innerText += "."
+    }
+})
 
 
 operatorButtons.forEach(button => button.addEventListener('click', function () {
