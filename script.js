@@ -14,6 +14,13 @@ function divide(num1, num2) {
     return num1 / num2;
 }
 
+function clear() {
+    display.innerText = "";
+    firstNumber = null;
+    secondNumber = null;
+    operator = null;
+}
+
 let firstNumber
     , secondNumber
     , operator;
@@ -31,24 +38,32 @@ function operate(operator, num1, num2) {
 }
 let display = document.querySelector(".display");
 
-let numberButtons = document.querySelectorAll(".numberbtn");
-let operatorButtons = document.querySelectorAll(".operatorbtn")
-let equalsButton = document.querySelector(".equalsbtn")
+let numberButtons = document.querySelectorAll(".numberbtn")
+    , operatorButtons = document.querySelectorAll(".operatorbtn")
+    , equalsButton = document.querySelector(".equalsbtn")
+    , clearButton = document.querySelector(".clear");
 
 numberButtons.forEach(button => button.addEventListener('click', function () {
+    if (operator && Number(display.innerText) == firstNumber){
+        display.innerText = "";
+    }
     let storedNumber = button.innerText;
     display.innerText += storedNumber;
 }))
 
+
 operatorButtons.forEach(button => button.addEventListener('click', function () {
     operator = button.innerText;
     firstNumber = Number(display.innerText);
-    display.innerText = "";
 }))
 
-equalsButton.addEventListener("click", function() {
+equalsButton.addEventListener("click", function () {
     secondNumber = Number(display.innerText);
     let result = operate(operator, firstNumber, secondNumber)
     display.innerText = result;
+    operator = null;
+    firstNumber = null;
+    secondNumber = null;
 })
 
+clearButton.addEventListener("click", clear)
